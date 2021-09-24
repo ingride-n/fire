@@ -9,7 +9,7 @@ function OptSalaryCalculator({ classes }) {
         <div>
           <h2>Annual 401k contribution</h2>
           <TextField></TextField> %<h2>Employer match percentage</h2>
-          <TextField></TextField> %<h2>Estimated total income tax</h2>
+          <TextField></TextField> %<h2>Estimated total income tax contribution</h2>
           <TextField></TextField> %<h2>Estimated total housing cost (monthly)</h2>
           <TextField></TextField>
           <h2>Estimated Savings - Pay Yourself First (monthly)</h2>
