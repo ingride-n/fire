@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { makeStyles } from "@material-ui/core/styles";
+import './styles.css';
+import OptSalaryCalculator from "./OptSalaryCalculator";
+
+const useStyles = makeStyles(() => ({
+  button: {
+    textTransform: "none",
+    border: "1px solid black",
+    backgroundColor: "yellow",
+    marginTop: "40px",
+    fontSize: "16px",
+    fontWeight: "bold",
+  }
+  
+}));
 
 function App() {
+  const classes = useStyles();
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <OptSalaryCalculator classes={classes}/>
+      <div></div>
     </div>
   );
 }

@@ -1,0 +1,35 @@
+
+h1 {
+  font-size: 20px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 16px;
+  margin-top: 20px;
+}
+  
+.App {
+  /* width: auto;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column; */
+}
+
+.osc {
+  width: auto;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.osc-form {
+  border: 1px solid black;
+  align-self: center;
+  padding: 10px 25px 35px 25px;
+  margin-top: 40px;
+  border-radius: 20px;
+  width: 70%;
+}
