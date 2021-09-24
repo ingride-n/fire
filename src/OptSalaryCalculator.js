@@ -8,13 +8,13 @@ function OptSalaryCalculator({ classes }) {
       <div className="osc-form">
         <div>
           <h2>Annual 401k contribution</h2>
-          <TextField></TextField> %<h2>Employer match base percentage</h2>
-          <TextField></TextField> %<h2>Expected total income tax</h2>
-          <TextField></TextField> %<h2>Expected housing cost (monthly)</h2>
+          <TextField></TextField> %<h2>Employer match percentage</h2>
+          <TextField></TextField> %<h2>Estimated total income tax</h2>
+          <TextField></TextField> %<h2>Estimated total housing cost (monthly)</h2>
           <TextField></TextField>
-          <h2>Desired savings (monthly)</h2>
+          <h2>Estimated Savings - Pay Yourself First (monthly)</h2>
           <TextField></TextField>
-          <h2>Desired Spending allowance per month</h2>
+          <h2>Spending Budget (monthly)</h2>
           Min: $ <TextField></TextField> Max: $ <TextField></TextField>
         </div>
         <center>
