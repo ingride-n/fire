@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 import './styles.css';
-import OptSalaryCalculator from "./OptSalaryCalculator";
+import ReverseSalaryCalculator from "./ReverseSalaryCalculator";
 
 const useStyles = makeStyles(() => ({
   button: {
@@ -18,7 +18,7 @@ function App() {
   const classes = useStyles();
   return (
     <div className="App">
-      <OptSalaryCalculator classes={classes}/>
+      <ReverseSalaryCalculator classes={classes}/>
       <div></div>
     </div>
   );

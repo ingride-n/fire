@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { TextField, Button, InputAdornment } from "@material-ui/core";
+import { TextField, Button, InputAdornment, Dialog } from "@material-ui/core";
 import "./styles.css";
 
-function OptSalaryCalculator({ classes }) {
+function ReverseSalaryCalculator({ classes }) {
   const [data, setData] = useState({
     annual401k: "10",
     employerMatch: "5",
@@ -14,20 +14,20 @@ function OptSalaryCalculator({ classes }) {
       max: "0",
     },
   });
-  const [done, setDone] = useState(false);
+  const [openDetails, setOpenDetails] = useState(false);
   const [salary, setSalary] = useState({
-    preTax: null,
-    postTax: null,
+    preTax: [],
+    postTax: [],
   });
 
   const calculate = (budget) => {
     // (gross pay * (1 - retirement)) * (1-total tax) = x
     // housing cost + budget + savings = y
     // y * 12 = x
-    console.log(budget, data);
+    // console.log(budget, data);
     const after =
       (budget + parseInt(data.savings) + parseInt(data.housingCost)) * 12;
-    console.log(after);
+    // console.log(after);
     const before =
       after /
       (1 - parseInt(data.incomeTax) / 100) /
@@ -39,19 +39,19 @@ function OptSalaryCalculator({ classes }) {
     const minTotals = calculate(parseInt(data.budget.min));
     const maxTotals = calculate(parseInt(data.budget.max));
 
-    console.log(minTotals, maxTotals);
+    // console.log(minTotals, maxTotals);
 
-    setSalary((prevSalary) => ({
+    setSalary({
       preTax: [minTotals.preTax, maxTotals.preTax],
       postTax: [minTotals.postTax, maxTotals.postTax],
-    }));
-    setDone(true);
+    });
+    setOpenDetails(true);
   };
 
   return (
-    <div className="osc">
-      <h1>Optimal salary calculator</h1>
-      <div className="osc-form">
+    <div className="rsc">
+      <h1>Reverse salary calculator</h1>
+      <div className="rsc-form">
         <div>
           <h2>Annual 401k contribution</h2>
           <TextField
@@ -148,7 +148,24 @@ function OptSalaryCalculator({ classes }) {
           </Button>
         </center>
       </div>
-      {done ? (
+      <DetailsPopup
+        openDetails={openDetails}
+        setOpenDetails={setOpenDetails}
+        salary={salary}
+      />
+    </div>
+  );
+}
+
+export default ReverseSalaryCalculator;
+
+
+function DetailsPopup({ salary, openDetails, setOpenDetails }) {
+  return (
+    <Dialog open={openDetails} onClose={() => setOpenDetails(false)}>
+      <div>
+        <span>
+        </span>
         <div>
           <table>
             <thead>
@@ -175,11 +192,14 @@ function OptSalaryCalculator({ classes }) {
             </tbody>
           </table>
         </div>
-      ) : (
-        <div></div>
-      )}
-    </div>
+        <Button
+          // className={classes.button}
+          style={{ float: "right" }}
+          onClick={() => setOpenDetails(false)}
+        >
+          Close
+        </Button>
+      </div>
+    </Dialog>
   );
 }
-
-export default OptSalaryCalculator;
