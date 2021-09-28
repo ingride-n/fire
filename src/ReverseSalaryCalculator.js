@@ -98,7 +98,7 @@ function ReverseSalaryCalculator({ classes }) {
               }))
             }
           />
-          <h2>Estimated Savings - Pay Yourself First (monthly)</h2>
+          <h2>Estimated Savings, "Pay Yourself First" (monthly)</h2>
           <TextField
             value={data.savings}
             InputProps={{
@@ -159,37 +159,33 @@ function ReverseSalaryCalculator({ classes }) {
 
 export default ReverseSalaryCalculator;
 
-
 function DetailsPopup({ salary, openDetails, setOpenDetails }) {
   return (
     <Dialog open={openDetails} onClose={() => setOpenDetails(false)}>
       <div>
-        <span>
-        </span>
+        <span></span>
         <div>
           <table>
-            <thead>
-              <tr>
-                <td></td>
-                <td>Before Tax</td>
-                <td>After Tax</td>
-                <td>Monthly</td>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Min Budget</td>
-                <td>{salary.preTax[0]}</td>
-                <td>{salary.postTax[0]}</td>
-                <td>{salary.postTax[0]/12}</td>
-              </tr>
-              <tr>
-                <td>Max Budget</td>
-              <td>{salary.preTax[1]}</td>
-              <td>{salary.postTax[1]}</td>
-              <td>{salary.postTax[1]/12}</td>
+            <tr>
+              <td></td>
+              <td>Min Budget</td>
+              <td>Max Budget</td>
             </tr>
-            </tbody>
+            <tr>
+              <td>Annual Before Tax</td>
+              <td>{salary.preTax[0]}</td>
+              <td>{salary.preTax[1]}</td>
+            </tr>
+            <tr>
+              <td>Annual After Tax</td>
+              <td>{salary.postTax[0]}</td>
+              <td>{salary.postTax[1]}</td>
+            </tr>
+            <tr>
+              <td>Monthly After Tax</td>
+              <td>{salary.postTax[0] / 12}</td>
+              <td>{salary.postTax[1] / 12}</td>
+            </tr>
           </table>
         </div>
         <Button
