@@ -4,14 +4,19 @@ import { TextField, Button, InputAdornment, Dialog } from "@material-ui/core";
 import "./styles.css";
 
 const useStyles = makeStyles(() => ({
-  button: {
+  goButton: {
     textTransform: "none",
     border: "1px solid black",
     backgroundColor: "yellow",
     marginTop: "40px",
     fontSize: "16px",
     fontWeight: "bold",
-  }
+  },
+  closeButton: {
+    float: "right",
+    width: "50px",
+    margin: "10px",
+  },
 }));
 
 function ReverseSalaryCalculator() {
@@ -149,7 +154,7 @@ function ReverseSalaryCalculator() {
           />
         </div>
         <center>
-          <Button className={classes.button} onClick={handleCalculate}>
+          <Button className={classes.goButton} onClick={handleCalculate}>
             Go
           </Button>
         </center>
@@ -168,39 +173,37 @@ function DetailsPopup({ salary, openDetails, setOpenDetails }) {
   return (
     <Dialog open={openDetails} onClose={() => setOpenDetails(false)}>
       <div>
-          <table>
-            <tr>
-              <td></td>
-              <td>Min Budget</td>
-              <td>Max Budget</td>
-            </tr>
-            <tr>
-              <td>Annual Before Tax</td>
-              <td>{salary.preTax[0]}</td>
-              <td>{salary.preTax[1]}</td>
-            </tr>
-            <tr>
-              <td>Annual After Tax</td>
-              <td>{salary.postTax[0]}</td>
-              <td>{salary.postTax[1]}</td>
-            </tr>
-            <tr>
-              <td>Monthly After Tax</td>
-              <td>{salary.postTax[0] / 12}</td>
-              <td>{salary.postTax[1] / 12}</td>
-            </tr>
-          </table>
-        </div>
+        <table id="rsc-table">
+          <tr>
+            <td style={{ width: "150px" }}></td>
+            <th style={{ width: "100px" }}>Min Budget</th>
+            <th style={{ width: "100px" }}>Max Budget</th>
+          </tr>
+          <tr>
+            <th>Annual Before Tax</th>
+            <td>{salary.preTax[0]}</td>
+            <td>{salary.preTax[1]}</td>
+          </tr>
+          <tr>
+            <th>Annual After Tax</th>
+            <td>{salary.postTax[0]}</td>
+            <td>{salary.postTax[1]}</td>
+          </tr>
+          <tr>
+            <th>Monthly After Tax</th>
+            <td>{salary.postTax[0] / 12}</td>
+            <td>{salary.postTax[1] / 12}</td>
+          </tr>
+        </table>
         <Button
-          style={{ float: "right" }}
+          className={classes.closeButton}
           onClick={() => setOpenDetails(false)}
         >
           Close
         </Button>
+      </div>
     </Dialog>
   );
 }
 
-
 export default ReverseSalaryCalculator;
-

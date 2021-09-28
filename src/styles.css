@@ -10,7 +10,8 @@ h2 {
 }
 
 table {
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  border-collapse: collapse;
   margin: 20px;
 }
 
@@ -29,4 +30,10 @@ table {
   margin-top: 40px;
   border-radius: 20px;
   width: 70%;
+}
+
+#rsc-table td, #rsc-table th {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
 }
