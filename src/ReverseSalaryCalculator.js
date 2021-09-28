@@ -1,8 +1,21 @@
 import { useState, useEffect } from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import { TextField, Button, InputAdornment, Dialog } from "@material-ui/core";
 import "./styles.css";
 
-function ReverseSalaryCalculator({ classes }) {
+const useStyles = makeStyles(() => ({
+  button: {
+    textTransform: "none",
+    border: "1px solid black",
+    backgroundColor: "yellow",
+    marginTop: "40px",
+    fontSize: "16px",
+    fontWeight: "bold",
+  }
+}));
+
+function ReverseSalaryCalculator() {
+  const classes = useStyles();
   const [data, setData] = useState({
     annual401k: "10",
     employerMatch: "5",
@@ -21,13 +34,8 @@ function ReverseSalaryCalculator({ classes }) {
   });
 
   const calculate = (budget) => {
-    // (gross pay * (1 - retirement)) * (1-total tax) = x
-    // housing cost + budget + savings = y
-    // y * 12 = x
-    // console.log(budget, data);
     const after =
       (budget + parseInt(data.savings) + parseInt(data.housingCost)) * 12;
-    // console.log(after);
     const before =
       after /
       (1 - parseInt(data.incomeTax) / 100) /
@@ -39,8 +47,6 @@ function ReverseSalaryCalculator({ classes }) {
     const minTotals = calculate(parseInt(data.budget.min));
     const maxTotals = calculate(parseInt(data.budget.max));
 
-    // console.log(minTotals, maxTotals);
-
     setSalary({
       preTax: [minTotals.preTax, maxTotals.preTax],
       postTax: [minTotals.postTax, maxTotals.postTax],
@@ -50,7 +56,7 @@ function ReverseSalaryCalculator({ classes }) {
 
   return (
     <div className="rsc">
-      <h1>Reverse salary calculator</h1>
+      <h1>Reverse Salary Calculator</h1>
       <div className="rsc-form">
         <div>
           <h2>Annual 401k contribution</h2>
@@ -98,7 +104,7 @@ function ReverseSalaryCalculator({ classes }) {
               }))
             }
           />
-          <h2>Estimated Savings, "Pay Yourself First" (monthly)</h2>
+          <h2>Estimated Savings - "Pay Yourself First" (monthly)</h2>
           <TextField
             value={data.savings}
             InputProps={{
@@ -157,14 +163,11 @@ function ReverseSalaryCalculator({ classes }) {
   );
 }
 
-export default ReverseSalaryCalculator;
-
 function DetailsPopup({ salary, openDetails, setOpenDetails }) {
+  const classes = useStyles();
   return (
     <Dialog open={openDetails} onClose={() => setOpenDetails(false)}>
       <div>
-        <span></span>
-        <div>
           <table>
             <tr>
               <td></td>
@@ -189,13 +192,15 @@ function DetailsPopup({ salary, openDetails, setOpenDetails }) {
           </table>
         </div>
         <Button
-          // className={classes.button}
           style={{ float: "right" }}
           onClick={() => setOpenDetails(false)}
         >
           Close
         </Button>
-      </div>
     </Dialog>
   );
 }
+
+
+export default ReverseSalaryCalculator;
+
