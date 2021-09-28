@@ -12,14 +12,10 @@ const useStyles = makeStyles(() => ({
     fontSize: "25px",
     textAlign: "center",
     fontWeight: "bold",
-    // margin: "auto",
     backgroundColor: "lavender",
   },
   box: {
     display: "flex",
-    // margin: "auto",
-    // justifyContent: "space-evenly",
-    // border: "1px solid black"
   },
 }));
 
@@ -29,18 +25,20 @@ function App() {
   const products = ["Reverse Salary Calculator"];
   return (
     <div className="App">
-      <div id="site-header">
-        <h1>AIVIE</h1>
-        <p>Financial Independence Toolkit</p>
-      </div>
-      {show === 0 ? <ReverseSalaryCalculator /> : null}
-      {!show ? (
+      <div className="home">
+        <div id="site-header">
+          <h1 className="page-title">AIVIE</h1>
+          <p>Financial Independence Toolkit</p>
+        </div>
         <Box className={classes.box}>
-          {products.map((product) => (
-            <Paper className={classes.item}>{product}</Paper>
+          {products.map((product, i) => (
+            <Paper className={classes.item} onClick={() => setShow(i)}>
+              {product}
+            </Paper>
           ))}
         </Box>
-      ) : null}
+        {show === 0 ? <ReverseSalaryCalculator /> : null}
+      </div>
     </div>
   );
 }

@@ -7,7 +7,6 @@ const useStyles = makeStyles(() => ({
   goButton: {
     textTransform: "none",
     border: "1px solid black",
-    backgroundColor: "yellow",
     marginTop: "40px",
     fontSize: "16px",
     fontWeight: "bold",
@@ -61,7 +60,7 @@ function ReverseSalaryCalculator() {
 
   return (
     <div className="rsc">
-      <h1>Reverse Salary Calculator</h1>
+       {/* <h1>Reverse Salary Calculator</h1> */}
       <div className="rsc-form">
         <div>
           <h2>Annual 401k contribution</h2>
