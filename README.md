@@ -8,7 +8,7 @@ This app was built using `create-react-app`.
 
 1. To install dependences, run `npm install`
 2. Run `npm start` 
-3. Open `https://localhost:3000` in a browser window. It automatically refreshes on each build.
+3. Open `http://localhost:3000` in a browser window. It automatically refreshes on each build.
 
 Here is the list of frontend technologies and frameworks used:
 - Material UI
