@@ -9,7 +9,7 @@ This app was built using `create-react-app` It is entirely client-side. Here is 
 - JavaScript
 - React.js
 
-To install dependences, run `npm install`. Follow these steps to build the project locally. 
+To install dependences, run `npm install`. Follow these steps to build the project locally/ run in development. 
 - Run `npm start` 
 - Open `https://localhost:3000` in a browser window. It automatically refreshes on each build.
 
